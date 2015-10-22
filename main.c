@@ -39,6 +39,7 @@ int main(void){
 void __ISR(_ADC_VECTOR, IPL7AUTO) _ADCInterrupt(void){
     
     IFS0bits.AD1IF = 0;
-  
+    OC2RS = ADC1BUF0;
+    OC4RS=ADC1BUF0;
     val = ADC1BUF0;// val is digital number from the equation" Vk=K(3.3-0)/1023+0  we could get voltage Vk=val*3.3/1023;
 }

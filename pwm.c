@@ -6,24 +6,46 @@
  */
 
 #include <xc.h>
+#include "pwm.h"
 
+/*#define  PINRD3  RPD3Rbits.RPD3R;    // map for OCD4  inp2
+#define  PINRD11 RPD11Rbits.RPD11R;  // map for OCD4    
 
-void initPWM(){
-    //RPD1Rbits.RPD1R = 0b1011; // map OC2 to RD1 how to map
+#define PINRD1   RPD1Rbits.RPD1R;   // map for OCD2
+#define PINRD5   RPD5Rbits.RPD5R;   // map for OCD2
+ *
+*/
+#define  PINRD3  RPD3Rbits.RPD3R;    // map for OCD4
+#define  PINRD11 RPD11Rbits.RPD11R;  // map for OCD4
+
+#define PINRD1   RPD1Rbits.RPD1R;   // map for OCD2
+#define PINRD5   RPD5Rbits.RPD5R;   // map for OCD2
+
+void initPWM(){ // the problem is we need to figure out which ocd is for left or right 
    
-    OC1R = 0; // Initialize primary Compare Register
-    OC1RS = 0; // Initialize secondary Compare Register
-    OC1CONbits.OCM = 6; // Configure for PWM mode
-    OC1CONbits.OCTSEL = 1; // 
-    OC1CONbits.ON = 1; // Turn off OC4 while doing setup.
+    // we could change the mapping pins in software to change the direction  
+     RPD1Rbits.RPD1R=0b1011;// map for ocd2
+     RPD5Rbits.RPD5R=0;
     
-    
+ 
     OC2R = 0; // Initialize primary Compare Register
     OC2RS = 0; // Initialize secondary Compare Register
     OC2CONbits.OCM = 6; // Configure for PWM mode Fault pin disabled
     OC2CONbits.OCTSEL = 1; // Timer3
     OC2CONbits.ON = 1; // Enable OC1
-  
+    
+    // we could change the mapping pins in software to change the direction 
+   
+    RPD3Rbits.RPD3R=0b1011; //map for ocd4
+    RPD11Rbits.RPD11R=0;
+    OC4R = 0; // Initialize primary Compare Register
+    OC4RS = 0; // Initialize secondary Compare Register
+    OC4CONbits.OCM = 6; // Configure for PWM mode
+    OC4CONbits.OCTSEL = 1; // timer3
+    OC4CONbits.ON = 1; // Turn off OC4 while doing setup.
+    
+    
+    
     
     
 
