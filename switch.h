@@ -7,7 +7,7 @@
 
 #ifndef SWITCH_H
 #define	SWITCH_H
-#define SW1 PORTDbits.RD0
+#define SW1 PORTDbits.RD6
 
 void initSW1();
 
