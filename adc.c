@@ -27,6 +27,6 @@ void initADC(){
     AD1CHSbits.CH0SA = 0; // Scan AN8 at least
     IFS0bits.AD1IF = 0;
     IEC0bits.AD1IE = 1;
-    IPC5bits.AD1IP = 7;
+    IPC5bits.AD1IP = 6;
     AD1CON1bits.ADON = 1; // turn on the ADC
 }
